@@ -87,3 +87,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=marlin \
     BUILD_FINGERPRINT="google/marlin/marlin:7.1.2/NHG47K/3865390:user/release-keys" \
     PRIVATE_BUILD_DESC="marlin-user 7.1.2 NHG47K 3865390 release-keys"
+
+include vendor/google/marlin/BoardConfigVendor.mk
+$(call inherit-product-if-exists, vendor/google/marlin/marlin-vendor.mk)
