@@ -469,3 +469,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Workaround for audio glitches
 PRODUCT_PROPERTY_OVERRIDES += \
     audio.adm.buffering.ms=3
+
+# Tethering
+PRODUCT_PROPERTY_OVERRIDES += \
+    net.tethering.noprovisioning=true
+
+# IMS
+PRODUCT_PACKAGES += \
+    com.android.ims.rcsmanager
+
+# Time services
+BOARD_USES_QC_TIME_SERVICES := true
