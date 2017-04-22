@@ -24,18 +24,27 @@ PRODUCT_COPY_FILES := device/google/marlin/apns-full-conf.xml:system/etc/apns-co
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
+-include device/google/marlin/marlin/device-shared.mk
+
 PRODUCT_NAME := aosp_marlin
 PRODUCT_DEVICE := marlin
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := AOSP on msm8996
 PRODUCT_MANUFACTURER := google
-PRODUCT_RESTRICT_VENDOR_FILES := true
+PRODUCT_RESTRICT_VENDOR_FILES := false
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=marlin \
+    PRODUCT_BRAND=google \
+    PRODUCT_MANUFACTURER=HTC \
+    PRODUCT_MODEL=Pixel XL \
+    BUILD_FINGERPRINT="google/marlin/marlin:7.1.2/NHG47K/3865390:user/release-keys" \
+    PRIVATE_BUILD_DESC="marlin-user 7.1.2 NHG47K 3865390 release-keys"
 
 PRODUCT_COPY_FILES += device/google/marlin/fstab.aosp_common:root/fstab.marlin
 
 $(call inherit-product, device/google/marlin/device-marlin.mk)
-$(call inherit-product-if-exists, vendor/google_devices/marlin/device-vendor-marlin.mk)
+$(call inherit-product-if-exists, vendor/google/marlin/device-vendor-marlin.mk)
 
 PRODUCT_PACKAGES += \
     Launcher3
-

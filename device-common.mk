@@ -18,16 +18,7 @@
 #
 # Everything in this directory will become public
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-    LOCAL_KERNEL := device/google/marlin-kernel/Image.gz-dtb
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
 PRODUCT_SHIPPING_API_LEVEL := 24
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
 
 DEVICE_PACKAGE_OVERLAYS += device/google/marlin/overlay
 
@@ -469,14 +460,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Workaround for audio glitches
 PRODUCT_PROPERTY_OVERRIDES += \
     audio.adm.buffering.ms=3
-
-# Tethering
-PRODUCT_PROPERTY_OVERRIDES += \
-    net.tethering.noprovisioning=true
-
-# IMS
-PRODUCT_PACKAGES += \
-    com.android.ims.rcsmanager
-
-# Time services
-BOARD_USES_QC_TIME_SERVICES := true
